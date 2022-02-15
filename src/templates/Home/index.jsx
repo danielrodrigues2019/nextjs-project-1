@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-
 import * as Styled from './styles'
-
+import P from 'prop-types'
+import Head from 'next/head'
 import { mapData } from '../../api/map-data'
 
 import { Heading } from '../../components/Heading'
@@ -18,49 +17,48 @@ import { Loading } from '../Loading'
 
 import config from '../../config'
 
-function Home() {
-  const [data, setData] = useState([])
-  const location = useLocation()
+function Home({ data }) {
+  // const [data, setData] = useState([])
 
-  useEffect(() => {
-    const pathname = location.pathname.replace(/[^a-z0-9-_]/gi, '')
-    const slug = pathname ? pathname : config.defaultSlug
+  // useEffect(() => {
+  //   const pathname = location.pathname.replace(/[^a-z0-9-_]/gi, '')
+  //   const slug = pathname ? pathname : config.defaultSlug
 
-    const load = async () => {
-      try {
-        const data = await fetch(config.url + slug)
-        const json = await data.json()
-        const pageData = mapData(json)
-        setData(pageData[0])
-      } catch (e) {
-        setData(undefined)
-      }
-    }
+  //   const load = async () => {
+  //     try {
+  //       const data = await fetch(config.url + slug)
+  //       const json = await data.json()
+  //       const pageData = mapData(json)
+  //       setData(pageData[0])
+  //     } catch (e) {
+  //       setData(undefined)
+  //     }
+  //   }
 
-    load()
-  }, [location])
+  //   load()
+  // }, [location])
 
-  useEffect(() => {
-    if (data === undefined) {
-      document.title = `Página não encontrada | ${config.siteName}`
-    }
+  // useEffect(() => {
+  //   if (data === undefined) {
+  //     document.title = `Página não encontrada | ${config.siteName}`
+  //   }
 
-    if (data && !data.slug) {
-      document.title = `Carregando... | ${config.siteName}`
-    }
+  //   if (data && !data.slug) {
+  //     document.title = `Carregando... | ${config.siteName}`
+  //   }
 
-    if (data && data.title) {
-      document.title = `${data.title} | ${config.siteName}`
-    }
-  }, [data])
+  //   if (data && data.title) {
+  //     document.title = `${data.title} | ${config.siteName}`
+  //   }
+  // }, [data])
 
-  if (data === undefined) {
+  if (!data) {
     return <PageNotFound />
   }
 
-  if (data && !data.slug) {
-    return <Loading />
-  }
+  // if (data && !data.slug) {
+  //   return <Loading />
+  // }
 
   const { menu, sections, footerHtml, slug } = data
   const { links, text, link, srcImg } = menu
@@ -96,3 +94,6 @@ function Home() {
 }
 
 export default Home
+Home.propTypes = {
+  data: P.array,
+}
