@@ -66,7 +66,11 @@ function Home() {
   const { links, text, link, srcImg } = menu
 
   return (
-    <Base links={links} footerHtml={footerHtml} logoData={{ text, link, srcImg }}>
+    <Base
+      links={links}
+      footerHtml={footerHtml}
+      logoData={{ text, link, srcImg }}
+    >
       {sections.map((section, index) => {
         const { component } = section
         const key = `${slug}-${index}`

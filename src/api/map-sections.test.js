@@ -1,4 +1,10 @@
-import { mapImageGrid, mapSectionContent, mapSections, mapSectionTwoColumns, mapTextGrid } from './map-sections'
+import {
+  mapImageGrid,
+  mapSectionContent,
+  mapSections,
+  mapSectionTwoColumns,
+  mapTextGrid,
+} from './map-sections'
 
 import pagesFakeData from './dados.json'
 
@@ -21,7 +27,9 @@ describe('map-sections', () => {
     ])
 
     const WithNoComponent = mapSections([{}])
-    expect(withNoTextOrImageGrid).toEqual([{ __component: 'section.section-grid' }])
+    expect(withNoTextOrImageGrid).toEqual([
+      { __component: 'section.section-grid' },
+    ])
     expect(WithNoComponent).toEqual([{}])
   })
 

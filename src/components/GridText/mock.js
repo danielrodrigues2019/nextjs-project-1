@@ -1,7 +1,8 @@
 export default {
   background: false,
   title: 'My grid',
-  description: 'Atque doloribus nobis laudantium esse ut, non commodi maxime distinctio veritatis unde',
+  description:
+    'Atque doloribus nobis laudantium esse ut, non commodi maxime distinctio veritatis unde',
   grid: [
     {
       title: 'Teste 1',

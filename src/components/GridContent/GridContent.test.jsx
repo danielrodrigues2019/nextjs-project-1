@@ -11,7 +11,9 @@ describe('<GridContent />', () => {
   })
 
   it('should render grid content', () => {
-    const { container } = renderTheme(<GridContent {...mock} background={undefined} />)
+    const { container } = renderTheme(
+      <GridContent {...mock} background={undefined} />,
+    )
     expect(container).toMatchSnapshot()
   })
 })

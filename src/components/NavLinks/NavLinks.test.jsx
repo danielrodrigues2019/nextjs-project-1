@@ -18,9 +18,13 @@ describe('<NavLinks />', () => {
 
   it('should render links', () => {
     renderTheme(<NavLinks links={mock} />)
-    expect(screen.getByText(/link 10/i).parentElement).toHaveStyleRule('flex-flow', 'column wrap', {
-      media: theme.media.lteMedium,
-    })
+    expect(screen.getByText(/link 10/i).parentElement).toHaveStyleRule(
+      'flex-flow',
+      'column wrap',
+      {
+        media: theme.media.lteMedium,
+      },
+    )
   })
 
   it('should match snapshot', () => {

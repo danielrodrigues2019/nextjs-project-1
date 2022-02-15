@@ -4,7 +4,13 @@ import { SectionBackground } from '../SectionBackground'
 import { Heading } from '../Heading'
 import { TextComponent } from '../TextComponent'
 
-export const GridText = ({ title, description, grid, background = false, sectionId = '' }) => {
+export const GridText = ({
+  title,
+  description,
+  grid,
+  background = false,
+  sectionId = '',
+}) => {
   return (
     <SectionBackground background={background} sectionId={sectionId}>
       <Styled.Container>
