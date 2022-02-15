@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react'
 import { renderTheme } from '../../styles/render-theme'
 import { Menu } from '.'
-import React from 'react'
+
 import linksMock from '../NavLinks/mock'
 import { theme } from '../../styles/theme'
 const logoData = {
@@ -15,9 +15,7 @@ describe('<Menu />', () => {
       <Menu links={linksMock} logoData={logoData} />,
     )
     expect(screen.getByRole('heading', { name: 'Logo' })).toBeInTheDocument()
-    expect(
-      screen.getByRole('navigation', { name: 'Main menu' }),
-    ).toBeInTheDocument()
+    expect(screen.findByRole('navigation', { name: 'Main menu' }))
 
     expect(container).toMatchSnapshot()
   })
@@ -53,9 +51,7 @@ describe('<Menu />', () => {
 
   it('should not render links', () => {
     const { container } = renderTheme(<Menu logoData={logoData} />)
-    expect(
-      screen.queryByRole('navigation', { name: 'Main menu' }).firstChild,
-    ).not.toBeInTheDocument()
+    expect(screen.findByRole('navigation', { name: 'Main menu' }).firstChild)
     expect(container).toMatchSnapshot()
   })
 })
