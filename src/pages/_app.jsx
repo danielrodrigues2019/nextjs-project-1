@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../styles/theme'
 import { AppProps } from 'next/app'
+import { GlobalStyles } from '../styles/global-styles'
 import React from 'react'
 
 function MyApp({ Component, pageProps }) {
@@ -8,6 +9,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
+        <GlobalStyles />
       </ThemeProvider>
     </>
   )
